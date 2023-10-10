@@ -1,0 +1,23 @@
+<h2>Buckets Comparison</h2>
+<div class="container">
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col">
+        <select class="form-select" aria-label="Bucket" (change)="updateChart()" formControlName="bucket">
+          <option selected>Select a bucket</option>
+          <option *ngFor="let type of bucketTypes" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+      <div class="col">
+        <select class="form-select" aria-label="Order" (change)="updateChart()" formControlName="order">
+          <option value="alphabetical">Alphabetical</option>
+          <option value="numeric">Numeric</option>
+        </select>
+      </div>
+      <div class="col">
+        <input class="form-control" type="number" aria-label="Pivot" (change)="updateChart()" formControlName="pivot">
+      </div>
+    </div>
+  </form>
+</div>
+<canvas baseChart [data]="barChartData" [options]="barChartOptions" type="bar"> </canvas>
